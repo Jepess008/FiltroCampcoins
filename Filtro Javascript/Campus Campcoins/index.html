@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Campcoins</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Campus Campcoins</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Interface</h5>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item">
+                  <button id="btn-abrir-modal-1" class="nav-link active">Gestion de Campers</button>
+                  <dialog style="width: 50%; border-radius: 10px; background-color: rgba(240, 255, 255, 0.459);"  id="modal-gestCamper">
+                    <form id="form" style="display: flex; flex-direction: column; gap: 10px;" method="dialog">
+                        <h1 style="text-align: center;">Registro nuevo Camper</h1>
+                        
+                        <label for="id"><b>Número de identificación</b></label> 
+                        <input name="id" id="id" type="number" placeholder="Ingrese su # de identificación">
+                        
+                        <label for="names"><b>Nombres Completos</b></label> 
+                        <input name="names" id="names" type="text" placeholder="Ingrese su Nombre ">
+                        
+                        <label for="emails"><b>Correo Electronico</b></label> 
+                        <input name="emails" id="emails" type="email" placeholder="Ingrese su correo electronico">
+
+                        <label for="phones"><b>Teléfono</b></label> 
+                        <input name="phones" id="phones" type="number" placeholder="Ingrese su # de contacto">
+                        
+                        <label for="grupo"><b>Grupo</b></label> 
+                        <select name="grupo" id="grupo">
+                            <option value="">Seleccione un grupo</option>
+                            <option value="C1">C1</option>
+                            <option value="R1">R1</option>
+                            <option value="C2">C2</option>
+                            <option value="R2">R2</option>
+                            <option value="C3">C3</option>
+                            <option value="R3">R3</option>
+                            <option value="C4">C4</option>
+                            <option value="R4">R4</option>
+                        </select>
+                        
+                        <div style="display: flex; justify-content: center;">
+                            <button style="width: 120px; margin-bottom: 20px; margin-top: 20px; text-align: center; border-radius: 5px; font-weight: bold;" id="registro" type="submit">Registrar</button>
+                        </div>
+                    </form>
+                    <div style="display: flex; justify-content: center;">
+                        <button style="width: 120px; border-radius: 5px; font-weight: bold;" id="btn-cerrar-modal-1">Cerrar</button>
+                    </div>
+                </dialog>
+                </li>
+                <li class="nav-item">
+                  <button id="btn-abrir-modal-2" class="nav-link active">Gestion de Concepto</button>
+                  <dialog style="width: 50%; border-radius: 10px; background-color: rgba(240, 255, 255, 0.459);"  id="modal-gestConcept">
+                    <form id="form2" style="display: flex; flex-direction: column; gap: 10px;" method="dialog">
+                        <h1 style="text-align: center;">Registro nuevo Concepto</h1>
+                                               
+                        <label for="descripcion"><b>Descripción del Concepto</b></label> 
+                        <input name="descripcion" id="descripcion" type="text" placeholder="Ingrese la descripcion del Concepto ">
+                        
+                        <label for="valor"><b>Valor del Concepto</b></label> 
+                        <input name="valor" id="valor" type="number" placeholder="Ingrese el valor del Concepto">
+                    
+                        
+                        <div style="display: flex; justify-content: center;">
+                            <button style="width: 120px; margin-bottom: 20px; margin-top: 20px; text-align: center; border-radius: 5px; font-weight: bold;" id="ingresar" type="submit">Ingresar</button>
+                        </div>
+                    </form>
+                    <div style="display: flex; justify-content: center;">
+                        <button style="width: 120px; border-radius: 5px; font-weight: bold;" id="btn-cerrar-modal-2">Cerrar</button>
+                    </div>
+                </dialog>
+                </li>
+
+                <li class="nav-item">
+                    <button id="btn-abrir-modal-3" class="nav-link active">Lista de Conceptos</button>
+                    <dialog id="modal-listConcepto">
+                        <h1 class="titulo" style="text-align: center; margin-bottom: 30px;">Conceptos</h1>
+                        <table id="listConceptos" style="margin-top: 30px; text-align: center; background-color: rgba(255, 255, 255, 0.384);" class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Codigo</th>
+                                    <th>Descripción</th>
+                                    <th>Valor</th>
+                                </tr>
+                            </thead>
+                        </table>
+                        <button style="margin-right: 300px; margin-top: 50px;" class="btn btn-primary" id="modificarConcepto">Modificar Concepto</button>
+                        <button style="margin-right: 293px; margin-top: 50px;"  class="btn btn-primary" id="delConcepto">Eliminar Concepto</button>
+                        <button style="margin-top: 50px;" class="btn btn-primary" id="btn-cerrar-modal-3">Cerrar modal</button>
+                    </dialog>
+                </li>
+                
+                <li class="nav-item">
+                    <button id="btn-abrir-modal-4" class="nav-link active">Gestion Campcoins</button>
+                    <dialog id="modal-campcoins">
+                        <div style="display: flex; flex-direction: column;">
+                            <label for="idCamper">Ingrese el Documento del Camper</label>
+                            <input style="text-align: center;" type="text" name="idCamper" id="idCamper" placeholder="Ingrese el Documento del Camper">
+                            <label for="idConcepto">Ingrese el Codigo del Concepto</label>
+                            <input type="text" name="idConcepto" id="idConcepto" placeholder="Ingrese el Codigo del Concepto">
+                        </div>
+
+
+                        <h1 class="titulo" style="text-align: center; margin-bottom: 30px;">Gestion de Campcoins</h1>
+                        <table id="listConceptos2" style="margin-top: 30px; text-align: center; background-color: rgba(255, 255, 255, 0.384);" class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Codigo</th>
+                                    <th>Descripción</th>
+                                    <th>Valor</th>
+                                </tr>
+                            </thead>
+                        </table>
+                        
+                        <table id="list-campers" style="margin-top: 30px; text-align: center; background-color: rgba(255, 255, 255, 0.384);" class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Documento</th>
+                                    <th>Nombre Completo</th>
+                                    <th>Telefono</th>
+                                    <th>Email</th>
+                                    <th>Grupo Campus</th>
+                                    <th>Campcoins Acumulados</th>
+                                </tr>
+                            </thead>
+                        </table>
+                        <button style="margin-right: 300px; margin-top: 50px;" class="btn btn-primary" id="add-puntos">Consignar Campcoins</button>
+                        <button style="margin-right: 293px;"  class="btn btn-primary" id="rest-puntos">Descontar Campcoins</button>
+                        <button style="margin-top: 50px;" class="btn btn-primary" id="btn-cerrar-modal-4">Cerrar modal</button>
+                    </dialog>
+                </li>
+              </ul>
+              <form class="d-flex mt-3" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-success" type="submit">Search</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+
+
+      <section class="contenedor">
+        
+
+        <h2 class="title">Campers Registrados</h2>
+
+        <div>
+            <button style="margin-right: 50px; width: 200px; background-color: grey; border-color: grey; font-weight: 500;" class="btn btn-primary" id="modificarCamper">Modificar Camper</button>
+            <button style="margin-right: 50px; width: 200px; background-color: grey; border-color: grey; font-weight: 500;" class="btn btn-primary" id="delCamper">Eliminar Camper</button>
+        </div> 
+
+        
+        <table id="list-campers2" style="margin-top: 30px; text-align: center; background-color: rgba(255, 255, 255, 0.384);" class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Documento</th>
+                    <th>Nombre Completo</th>
+                    <th>Telefono</th>
+                    <th>Email</th>
+                    <th>Grupo Campus</th>
+                    <th>Campcoins Acumulados</th>
+                </tr>
+            </thead>
+        </table>
+        
+
+
+      </section>
+
+    <script src="main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
